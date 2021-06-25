@@ -1,0 +1,96 @@
+--Queries in the Microsoft Visual Studio
+
+--Populating Author_TitleAu
+
+1)ETL Logging
+EXEC CreateETLLoggingRecord -- Executing stored procedure to start ETL Logging
+@TableName = Author_TitleAU,
+@ETLID = ? OUTPUT
+
+2)Truncating
+TRUNCATE TABLE stg_Author_TitleAU
+
+3)DATA loading on source assistant
+SELECT a.au_id, CONCAT(a.au_fname,' ',a.au_lname) AS au_fname, t.title_id, ta.au_ord, a.contract
+FROM Publisher.dbo.authors a JOIN Publisher.dbo.titleauthor ta
+ON a.au_id = ta.au_id
+JOIN Publisher.dbo.titles t
+ON t.title_id =  ta.title_id;
+
+4)Merge
+DECLARE @PST datetime
+SET @PST = getdate( )
+EXEC Merge_Author_TitleAU
+@PackageStartTime = @PST,
+@RecordCount = ? OUTPUT
+
+
+5)Update ETL Logging record
+EXEC UpdateETLLoggingRecord
+@ETLID = ?,
+@RecordCount = ?
+
+--Populating Books_Title
+
+1)ETL Logging
+EXEC CreateETLLoggingRecord -- Executing stored procedure to start ETL Logging
+@TableName = Books_Title,
+@ETLID = ? OUTPUT
+
+2)Truncating
+TRUNCATE TABLE stg_Books_Title
+
+3)DATA loading on source assistant
+SELECT t.title_id, t.title, t.type, GETDATE() AS Date
+FROM titles t
+
+4)Merge
+EXEC Merge_Books_Title
+@RecordCount = ? OUTPUT
+
+
+5)Update ETL Logging record
+EXEC UpdateETLLoggingRecord
+@ETLID = ?,
+@RecordCount = ?
+
+--Populating Payment_facts
+
+1)ETL Logging
+EXEC CreateETLLoggingRecord -- Executing stored procedure to start ETL Logging
+@TableName = Payment_facts,
+@ETLID = ? OUTPUT
+
+2)Truncating
+TRUNCATE TABLE stg_Payment_facts
+
+3)DATA loading on source assistant
+SELECT a.au_id, t.title_id, t.ytd_sales, t.royalty, ta.royaltyper, (t.ytd_sales*(t.royalty)/100)*ta.royaltyper/100 AS RoyPay_YtdSales,  (t.advance*ta.royaltyper)/100 AS AdvancePerAuthor, ((t.ytd_sales*(t.royalty)/100)+t.advance)*(ta.royaltyper)/100 AS TotalPay
+FROM Publisher.dbo.authors a INNER JOIN Publisher.dbo.titleauthor ta
+ON a.au_id = ta.au_id
+INNER JOIN Publisher.dbo.titles t
+ON ta.title_id = t.title_id
+
+4)LookUP Author
+SELECT CAST(a.AuthorKey AS CHAR) AS AuthorKey, a.au_id, a.EndDate
+FROM CAPublisher_DW.dbo.Author_TitleAU a
+
+In advanced option
+select * from (SELECT CAST(a.AuthorKey AS CHAR) AS AuthorKey, a.au_id, a.EndDate
+FROM CAPublisher_DW.dbo.Author_TitleAU a) [refTable]
+where [refTable].[au_id] = ?
+and [refTable].[EndDate] is NULL
+
+5)LookUp Title
+SELECT CAST(t.TitleKey AS CHAR) AS TitleKey, t.title_id
+FROM CAPublisher_DW.dbo.Books_Title t
+
+6)Merge
+EXEC Merge_Payment_facts
+@RecordCount = ? OUTPUT
+
+
+7)Update ETL Logging record
+EXEC UpdateETLLoggingRecord
+@ETLID = ?,
+@RecordCount = ?

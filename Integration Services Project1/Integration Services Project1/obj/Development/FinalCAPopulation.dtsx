@@ -1,0 +1,2873 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/16/2021 11:30:42 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-TEE8Q4V"
+  DTS:CreatorName="DESKTOP-TEE8Q4V\manoj"
+  DTS:DTSID="{E28F576D-9500-410E-9247-01125C4B2342}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.150"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="FinalCAPopulation"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{1AD3AE39-446C-4665-8367-A88115B9D99C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-TEE8Q4V.CAPublisher_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2897DFA3-5369-4C1A-943F-01D9E4BAC554}"
+      DTS:ObjectName="DESKTOP-TEE8Q4V.CAPublisher_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-TEE8Q4V;Initial Catalog=CAPublisher_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-TEE8Q4V.CAPublisher_DW 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{91AC7615-6D0D-4802-8100-E83A3E431B4D}"
+      DTS:ObjectName="DESKTOP-TEE8Q4V.CAPublisher_DW 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-TEE8Q4V;User ID=;Initial Catalog=CAPublisher_DW;Provider=MSOLEDBSQL.1;Persist Security Info=False;Integrated Security=SSPI;Initial File Name=;Server SPN=;Authentication=;Access Token=;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-TEE8Q4V.Publisher]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3A988A80-83CC-4466-BB40-8F5C8AFC9B0F}"
+      DTS:ObjectName="DESKTOP-TEE8Q4V.Publisher">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-TEE8Q4V;User ID=;Initial Catalog=Publisher;Provider=MSOLEDBSQL.1;Persist Security Info=False;Integrated Security=SSPI;Initial File Name=;Server SPN=;Authentication=;Access Token=;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CD6C333F-AFD3-4F41-9CBF-222252F6A377}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ETL_ID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8AF50B6F-3293-458F-B1B9-1E9DE5545918}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Populating Author_TitleAU"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{5311F0A5-7380-4AC3-BB44-C6A77E379351}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Populating Author_TitleAU">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Populating Author_TitleAU\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{DA5CB6AB-57FC-4BC3-832E-1B2437B9ABC9}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Get Data From Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT a.au_id, CONCAT(a.au_fname,' ',a.au_lname) AS au_fname, t.title_id, ta.au_ord, a.contract
+FROM Publisher.dbo.authors a JOIN Publisher.dbo.titleauthor ta
+ON a.au_id = ta.au_id
+JOIN Publisher.dbo.titles t
+ON t.title_id =  ta.title_id;</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-TEE8Q4V.Publisher]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-TEE8Q4V.Publisher]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[au_id]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[au_id]"
+                          length="20"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[au_id]"
+                          name="au_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[au_fname]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[au_fname]"
+                          length="61"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[au_fname]"
+                          name="au_fname"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[title_id]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[title_id]"
+                          length="20"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[title_id]"
+                          name="title_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[au_ord]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[au_ord]"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[au_ord]"
+                          name="au_ord"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[contract]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[contract]"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[contract]"
+                          name="contract"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[au_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="au_id" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[au_fname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="61"
+                          name="au_fname" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[title_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="title_id" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[au_ord]"
+                          dataType="ui1"
+                          name="au_ord" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[contract]"
+                          dataType="bool"
+                          name="contract" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[au_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[au_id]"
+                          name="au_id" />
+                        <outputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[au_fname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="61"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[au_fname]"
+                          name="au_fname" />
+                        <outputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[title_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[title_id]"
+                          name="title_id" />
+                        <outputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[au_ord]"
+                          dataType="ui1"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[au_ord]"
+                          name="au_ord" />
+                        <outputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[contract]"
+                          dataType="bool"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[contract]"
+                          name="contract" />
+                        <outputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Load Data to Staging Table"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[stg_Author_TitleAU]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-TEE8Q4V.CAPublisher_DW 1]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-TEE8Q4V.CAPublisher_DW 1]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input].Columns[au_id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="au_id"
+                          externalMetadataColumnId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[au_id]"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[au_id]" />
+                        <inputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input].Columns[title_id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="title_id"
+                          externalMetadataColumnId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[title_id]"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[title_id]" />
+                        <inputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input].Columns[au_ord]"
+                          cachedDataType="ui1"
+                          cachedName="au_ord"
+                          externalMetadataColumnId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[au_ord]"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[au_ord]" />
+                        <inputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input].Columns[contract]"
+                          cachedDataType="bool"
+                          cachedName="contract"
+                          externalMetadataColumnId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[contract]"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[contract]" />
+                        <inputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input].Columns[au_fname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="61"
+                          cachedName="au_fname"
+                          externalMetadataColumnId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[au_name]"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[au_fname]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[au_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="au_id" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[au_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="65"
+                          name="au_name" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[title_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="title_id" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[au_ord]"
+                          dataType="ui1"
+                          name="au_ord" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[contract]"
+                          dataType="bool"
+                          name="contract" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Populating Author_TitleAU\Data Flow Task.Paths[OLE DB Source Output]"
+                  endId="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Populating Author_TitleAU\Merge Data To Dimensional Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{EB17868D-D1AE-4FB6-89C0-0CFDD14B70D7}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Merge Data To Dimensional Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2897DFA3-5369-4C1A-943F-01D9E4BAC554}"
+              SQLTask:SqlStatementSource="DECLARE @PST datetime&#xA;SET @PST = getdate( )&#xA;EXEC Merge_Author_TitleAU&#xA;@PackageStartTime = @PST,&#xA;@RecordCount = ? OUTPUT&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::RecordCount"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Populating Author_TitleAU\Start ETL Logging"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B41F3F6B-D2AC-45FD-82BF-C279409C1D92}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Start ETL Logging"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2897DFA3-5369-4C1A-943F-01D9E4BAC554}"
+              SQLTask:SqlStatementSource="EXEC CreateETLLoggingRecord -- Executing stored procedure to start ETL Logging&#xA;@TableName = Author_TitleAU,&#xA;@ETLID = ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::ETL_ID"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Populating Author_TitleAU\Truncate Staging Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1C2620CB-5748-45D5-A7D4-5D61A1FD272B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Staging Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2897DFA3-5369-4C1A-943F-01D9E4BAC554}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE stg_Author_TitleAU" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Populating Author_TitleAU\Update ETL Logging Record"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{42494CA3-A5C9-47D9-B292-9348FEEB9E60}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update ETL Logging Record"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2897DFA3-5369-4C1A-943F-01D9E4BAC554}"
+              SQLTask:SqlStatementSource="EXEC UpdateETLLoggingRecord&#xA;@ETLID = ?,&#xA;@RecordCount = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::ETL_ID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::RecordCount"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Populating Author_TitleAU.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{EBEA13F7-6314-4F5D-BE6C-4571F1CAF249}"
+          DTS:From="Package\Populating Author_TitleAU\Start ETL Logging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Populating Author_TitleAU\Truncate Staging Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Populating Author_TitleAU.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{5EE1BBE0-F0E0-4CA5-A877-02F08A626ED8}"
+          DTS:From="Package\Populating Author_TitleAU\Truncate Staging Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Populating Author_TitleAU\Data Flow Task" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Populating Author_TitleAU.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{2DF11E19-A42C-4977-82B8-093EB1E0B389}"
+          DTS:From="Package\Populating Author_TitleAU\Data Flow Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Populating Author_TitleAU\Merge Data To Dimensional Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Populating Author_TitleAU.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{16A88228-3C93-42F7-A748-37F83351E321}"
+          DTS:From="Package\Populating Author_TitleAU\Merge Data To Dimensional Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Populating Author_TitleAU\Update ETL Logging Record" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Populating Books_Title"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{56EDE826-F6B3-47DE-B7DC-95F26217AD02}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Populating Books_Title">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Populating Books_Title\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{56E7DA9E-ACE9-46F5-9B1A-C1D6D186B5C0}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Get Data From Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT t.title_id, t.title, t.type, GETDATE() AS Date
+FROM titles t</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-TEE8Q4V.Publisher]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-TEE8Q4V.Publisher]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[title_id]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[title_id]"
+                          length="20"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[title_id]"
+                          name="title_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[title]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                          length="80"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[title]"
+                          name="title"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[type]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[type]"
+                          length="12"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[type]"
+                          name="type"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[Date]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[Date]"
+                          name="Date"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[title_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="title_id" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                          codePage="1252"
+                          dataType="str"
+                          length="80"
+                          name="title" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          name="type" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                          dataType="dbTimeStamp"
+                          name="Date" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[title_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[title_id]"
+                          name="title_id" />
+                        <outputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[title]"
+                          codePage="1252"
+                          dataType="str"
+                          length="80"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[title]"
+                          name="title" />
+                        <outputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[type]"
+                          name="type" />
+                        <outputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[Date]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[Date]"
+                          name="Date" />
+                        <outputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Load Data into Staging Table"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[stg_Books_Title]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-TEE8Q4V.CAPublisher_DW 1]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-TEE8Q4V.CAPublisher_DW 1]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Inputs[OLE DB Destination Input].Columns[title_id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="title_id"
+                          externalMetadataColumnId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[title_id]"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[title_id]" />
+                        <inputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Inputs[OLE DB Destination Input].Columns[title]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="80"
+                          cachedName="title"
+                          externalMetadataColumnId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[title]" />
+                        <inputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Inputs[OLE DB Destination Input].Columns[type]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="12"
+                          cachedName="type"
+                          externalMetadataColumnId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[type]"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[type]" />
+                        <inputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Inputs[OLE DB Destination Input].Columns[Date]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Date"
+                          externalMetadataColumnId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output].Columns[Date]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[title_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="title_id" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                          codePage="1252"
+                          dataType="str"
+                          length="80"
+                          name="title" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          name="type" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                          dataType="dbTimeStamp"
+                          name="Date" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Populating Books_Title\Data Flow Task.Paths[OLE DB Source Output]"
+                  endId="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Populating Books_Title\Data Flow Task\Get Data From Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Populating Books_Title\Merge Data To Dimensional Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{DBC072CA-6039-4376-93B6-C0E156D601F0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Merge Data To Dimensional Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2897DFA3-5369-4C1A-943F-01D9E4BAC554}"
+              SQLTask:SqlStatementSource="EXEC Merge_Books_Title&#xA;@RecordCount = ? OUTPUT&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::RecordCount"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Populating Books_Title\Start ETL Logging Process"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{DB56A600-BC92-4142-8F42-A921C98ED4F6}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Start ETL Logging Process"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2897DFA3-5369-4C1A-943F-01D9E4BAC554}"
+              SQLTask:SqlStatementSource="EXEC CreateETLLoggingRecord -- Executing stored procedure to start ETL Logging&#xA;@TableName = Books_Title,&#xA;@ETLID = ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::ETL_ID"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Populating Books_Title\Truncate Staging Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{44682881-BBA7-43DA-B23C-3DFE4C90C7BA}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Staging Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2897DFA3-5369-4C1A-943F-01D9E4BAC554}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE stg_Books_Title" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Populating Books_Title\Update ETL Logging Record"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5D36836E-991F-4895-8274-2E47941C5798}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update ETL Logging Record"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2897DFA3-5369-4C1A-943F-01D9E4BAC554}"
+              SQLTask:SqlStatementSource="EXEC UpdateETLLoggingRecord&#xA;@ETLID = ?,&#xA;@RecordCount = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::ETL_ID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::RecordCount"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Populating Books_Title.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{E155F0DC-2E0E-4F7A-A65A-3E2740079052}"
+          DTS:From="Package\Populating Books_Title\Start ETL Logging Process"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Populating Books_Title\Truncate Staging Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Populating Books_Title.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{54DCD375-A0B4-414B-917A-003EB5028FED}"
+          DTS:From="Package\Populating Books_Title\Truncate Staging Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Populating Books_Title\Data Flow Task" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Populating Books_Title.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{37477546-0FE5-499A-BD48-B738BDC0D9BD}"
+          DTS:From="Package\Populating Books_Title\Data Flow Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Populating Books_Title\Merge Data To Dimensional Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Populating Books_Title.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{A9AF5438-9B5B-41D4-B9AF-BE4BC2AA0B74}"
+          DTS:From="Package\Populating Books_Title\Merge Data To Dimensional Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Populating Books_Title\Update ETL Logging Record" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Populating Payment_facts"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{1301D04E-59AF-4C85-AD81-9AAB63CE3751}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Populating Payment_facts">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Populating Payment_facts\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{BE823B1E-5485-4127-9843-57A57AF861FB}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup Auth"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CAST(a.AuthorKey AS CHAR) AS AuthorKey, a.au_id, a.EndDate
+FROM CAPublisher_DW.dbo.Author_TitleAU a</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CAST(a.AuthorKey AS CHAR) AS AuthorKey, a.au_id, a.EndDate
+FROM CAPublisher_DW.dbo.Author_TitleAU a) [refTable]
+where [refTable].[au_id] = ?
+and [refTable].[EndDate] is NULL</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="AuthorKey" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="au_id" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="EndDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[au_id]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-TEE8Q4V.CAPublisher_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-TEE8Q4V.CAPublisher_DW]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth.Inputs[Lookup Input].Columns[AuthorKey]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="au_id"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[au_id]"
+                          name="AuthorKey"
+                          truncationRowDisposition="IgnoreFailure"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">au_id</property>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">AuthorKey</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Populating Payment_facts\Data Flow Task\Lookup Title"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup Title"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CAST(t.TitleKey AS CHAR) AS TitleKey, t.title_id
+FROM CAPublisher_DW.dbo.Books_Title t</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CAST(t.TitleKey AS CHAR) AS TitleKey, t.title_id
+FROM CAPublisher_DW.dbo.Books_Title t) [refTable]
+where [refTable].[title_id] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="TitleKey" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="title_id" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[title_id]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Populating Payment_facts\Data Flow Task\Lookup Title.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-TEE8Q4V.CAPublisher_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-TEE8Q4V.CAPublisher_DW]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Populating Payment_facts\Data Flow Task\Lookup Title.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\Lookup Title.Inputs[Lookup Input].Columns[TitleKey]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="title_id"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[title_id]"
+                          name="TitleKey"
+                          truncationRowDisposition="IgnoreFailure"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">title_id</property>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">TitleKey</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Populating Payment_facts\Data Flow Task\Lookup Title.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Populating Payment_facts\Data Flow Task\Lookup Title.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Populating Payment_facts\Data Flow Task\Lookup Title.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Populating Payment_facts\Data Flow Task\Lookup Title.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Populating Payment_facts\Data Flow Task\Lookup Title.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Populating Payment_facts\Data Flow Task\Lookup Title.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\Lookup Title.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\Lookup Title.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\Lookup Title.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\Lookup Title.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[stg_Payment_facts]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-TEE8Q4V.CAPublisher_DW 1]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-TEE8Q4V.CAPublisher_DW 1]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[au_id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="au_id"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AuthorKey]"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[au_id]" />
+                        <inputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[title_id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="title_id"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TitleKey]"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[title_id]" />
+                        <inputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ytd_sales]"
+                          cachedDataType="i4"
+                          cachedName="ytd_sales"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ytd_sales]"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ytd_sales]" />
+                        <inputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[royalty]"
+                          cachedDataType="i4"
+                          cachedName="royalty"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[royalty]"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[royalty]" />
+                        <inputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[royaltyper]"
+                          cachedDataType="i4"
+                          cachedName="royaltyper"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[royaltyper]"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[royaltyper]" />
+                        <inputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RoyPay_YtdSales]"
+                          cachedDataType="i4"
+                          cachedName="RoyPay_YtdSales"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RoyPay_YtdSales]"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[RoyPay_YtdSales]" />
+                        <inputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AdvancePerAuthor]"
+                          cachedDataType="cy"
+                          cachedName="AdvancePerAuthor"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AdvancePerAuthor]"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[AdvancePerAuthor]" />
+                        <inputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalPay]"
+                          cachedDataType="cy"
+                          cachedName="TotalPay"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalPay]"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalPay]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AuthorKey]"
+                          dataType="i4"
+                          name="AuthorKey" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TitleKey]"
+                          dataType="i4"
+                          name="TitleKey" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ytd_sales]"
+                          dataType="i4"
+                          name="ytd_sales" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[royalty]"
+                          dataType="i4"
+                          name="royalty" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[royaltyper]"
+                          dataType="i4"
+                          name="royaltyper" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RoyPay_YtdSales]"
+                          dataType="r8"
+                          name="RoyPay_YtdSales" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AdvancePerAuthor]"
+                          dataType="cy"
+                          name="AdvancePerAuthor" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalPay]"
+                          dataType="r8"
+                          name="TotalPay" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT a.au_id, t.title_id, t.ytd_sales, t.royalty, ta.royaltyper, (t.ytd_sales*(t.royalty)/100)*ta.royaltyper/100 AS RoyPay_YtdSales,  (t.advance*ta.royaltyper)/100 AS AdvancePerAuthor, ((t.ytd_sales*(t.royalty)/100)+t.advance)*(ta.royaltyper)/100 AS TotalPay
+FROM Publisher.dbo.authors a INNER JOIN Publisher.dbo.titleauthor ta
+ON a.au_id = ta.au_id
+INNER JOIN Publisher.dbo.titles t
+ON ta.title_id = t.title_id</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-TEE8Q4V.Publisher]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-TEE8Q4V.Publisher]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[au_id]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[au_id]"
+                          length="20"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[au_id]"
+                          name="au_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[title_id]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[title_id]"
+                          length="20"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[title_id]"
+                          name="title_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ytd_sales]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ytd_sales]"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ytd_sales]"
+                          name="ytd_sales"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[royalty]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[royalty]"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[royalty]"
+                          name="royalty"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[royaltyper]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[royaltyper]"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[royaltyper]"
+                          name="royaltyper"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[RoyPay_YtdSales]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RoyPay_YtdSales]"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[RoyPay_YtdSales]"
+                          name="RoyPay_YtdSales"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[AdvancePerAuthor]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AdvancePerAuthor]"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[AdvancePerAuthor]"
+                          name="AdvancePerAuthor"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalPay]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalPay]"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalPay]"
+                          name="TotalPay"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[au_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="au_id" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[title_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="title_id" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ytd_sales]"
+                          dataType="i4"
+                          name="ytd_sales" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[royalty]"
+                          dataType="i4"
+                          name="royalty" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[royaltyper]"
+                          dataType="i4"
+                          name="royaltyper" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RoyPay_YtdSales]"
+                          dataType="i4"
+                          name="RoyPay_YtdSales" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AdvancePerAuthor]"
+                          dataType="cy"
+                          name="AdvancePerAuthor" />
+                        <externalMetadataColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalPay]"
+                          dataType="cy"
+                          name="TotalPay" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[au_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[au_id]"
+                          name="au_id" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[title_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[title_id]"
+                          name="title_id" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ytd_sales]"
+                          dataType="i4"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ytd_sales]"
+                          name="ytd_sales" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[royalty]"
+                          dataType="i4"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[royalty]"
+                          name="royalty" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[royaltyper]"
+                          dataType="i4"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[royaltyper]"
+                          name="royaltyper" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RoyPay_YtdSales]"
+                          dataType="i4"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RoyPay_YtdSales]"
+                          name="RoyPay_YtdSales" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AdvancePerAuthor]"
+                          dataType="cy"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AdvancePerAuthor]"
+                          name="AdvancePerAuthor" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalPay]"
+                          dataType="cy"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalPay]"
+                          name="TotalPay" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Populating Payment_facts\Data Flow Task.Paths[Lookup Match Output]"
+                  endId="Package\Populating Payment_facts\Data Flow Task\Lookup Title.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Populating Payment_facts\Data Flow Task.Paths[Lookup Match Output1]"
+                  endId="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Lookup Match Output"
+                  startId="Package\Populating Payment_facts\Data Flow Task\Lookup Title.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Populating Payment_facts\Data Flow Task.Paths[OLE DB Source Output]"
+                  endId="Package\Populating Payment_facts\Data Flow Task\Lookup Auth.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Populating Payment_facts\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Populating Payment_facts\Merge Data to Dim Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B1DCED2C-F32C-4709-A617-D839A86A2F52}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Merge Data to Dim Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2897DFA3-5369-4C1A-943F-01D9E4BAC554}"
+              SQLTask:SqlStatementSource="EXEC Merge_Payment_facts&#xA;@RecordCount = ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::RecordCount"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Populating Payment_facts\Start ETL Logging Process"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{FEBCBAA5-D9CF-4935-9634-5E7EFA6FDF6B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Start ETL Logging Process"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2897DFA3-5369-4C1A-943F-01D9E4BAC554}"
+              SQLTask:SqlStatementSource="EXEC CreateETLLoggingRecord -- Executing stored procedure to start ETL Logging&#xA;@TableName = Payment_facts,&#xA;@ETLID = ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::ETL_ID"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Populating Payment_facts\Truncate Staging Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CD767487-567F-4238-B37D-D86A0C2BF41E}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Staging Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2897DFA3-5369-4C1A-943F-01D9E4BAC554}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE stg_Payment_facts" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Populating Payment_facts\Update ETL Logging Record"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{31479C65-5428-4846-B298-5844C88457B4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update ETL Logging Record"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2897DFA3-5369-4C1A-943F-01D9E4BAC554}"
+              SQLTask:SqlStatementSource="EXEC UpdateETLLoggingRecord&#xA;@ETLID = ?,&#xA;@RecordCount = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::ETL_ID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::RecordCount"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Populating Payment_facts.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{8F672BA4-6465-4CBF-9FFE-32F2A65032ED}"
+          DTS:From="Package\Populating Payment_facts\Start ETL Logging Process"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Populating Payment_facts\Truncate Staging Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Populating Payment_facts.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{D9155120-91B4-42DE-9DA4-E59B47AC9694}"
+          DTS:From="Package\Populating Payment_facts\Truncate Staging Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Populating Payment_facts\Data Flow Task" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Populating Payment_facts.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{C7D537FD-90D6-4D1B-82D8-F507A2F1AA09}"
+          DTS:From="Package\Populating Payment_facts\Data Flow Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Populating Payment_facts\Merge Data to Dim Table" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Populating Payment_facts.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{BED468EA-23A1-48ED-AF72-4A0B9C3A7A66}"
+          DTS:From="Package\Populating Payment_facts\Merge Data to Dim Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Populating Payment_facts\Update ETL Logging Record" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{296BC867-30CF-457F-A8FB-5CB067BF5456}"
+      DTS:From="Package\Populating Author_TitleAU"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Populating Books_Title" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{5CB1D3EF-FE3E-4CCD-9D7E-5D315599489F}"
+      DTS:From="Package\Populating Books_Title"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Populating Payment_facts" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Populating Author_TitleAU\Start ETL Logging"
+          TopLeft="52.100005463759,5.86666743808321" />
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\Populating Author_TitleAU\Truncate Staging Table"
+          TopLeft="36.2666727595856,60.466667872005" />
+        <EdgeLayout
+          Id="Package\Populating Author_TitleAU.PrecedenceConstraints[Constraint]"
+          TopLeft="214.500005463759,26.6666674380832">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.1666672958267,54.6000004339218"
+              Start="0,0"
+              End="15.6666672958267,54.6000004339218">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="26.6666672958267,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="26.6666672958267,0"
+                    Point2="30.6666672958267,0"
+                    Point3="30.6666672958267,4" />
+                  <mssgle:LineSegment
+                    End="30.6666672958267,50.6000004339218" />
+                  <mssgle:CubicBezierSegment
+                    Point1="30.6666672958267,50.6000004339218"
+                    Point2="30.6666672958267,54.6000004339218"
+                    Point3="26.6666672958267,54.6000004339218" />
+                  <mssgle:LineSegment
+                    End="15.6666672958267,54.6000004339218" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Populating Author_TitleAU\Data Flow Task"
+          TopLeft="54.6666656070286,129.80000175635" />
+        <EdgeLayout
+          Id="Package\Populating Author_TitleAU.PrecedenceConstraints[Constraint 1]"
+          TopLeft="129.666669183307,102.066667872005">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.7333338843453"
+              Start="0,0"
+              End="0,20.2333338843453">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2333338843453" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="236.8,41.6"
+          Id="Package\Populating Author_TitleAU\Merge Data To Dimensional Table"
+          TopLeft="28,206.06666902913" />
+        <EdgeLayout
+          Id="Package\Populating Author_TitleAU.PrecedenceConstraints[Constraint 2]"
+          TopLeft="129.866665607029,171.40000175635">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.5333343929714,34.6666672727796"
+              Start="0,0"
+              End="16.5333343929714,27.1666672727796">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.3333336363898" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.3333336363898"
+                    Point2="0,17.3333336363898"
+                    Point3="4,17.3333336363898" />
+                  <mssgle:LineSegment
+                    End="12.5333343929714,17.3333336363898" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.5333343929714,17.3333336363898"
+                    Point2="16.5333343929714,17.3333336363898"
+                    Point3="16.5333343929714,21.3333336363898" />
+                  <mssgle:LineSegment
+                    End="16.5333343929714,27.1666672727796" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\Populating Author_TitleAU\Update ETL Logging Record"
+          TopLeft="43.8333327041731,268.333335929977" />
+        <EdgeLayout
+          Id="Package\Populating Author_TitleAU.PrecedenceConstraints[Constraint 3]"
+          TopLeft="28,226.86666902913">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15.8333327041731,62.2666669008468"
+              Start="0,0"
+              End="8.33333270417309,62.2666669008468">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5,0"
+                    Point2="-22.5,0"
+                    Point3="-22.5,4" />
+                  <mssgle:LineSegment
+                    End="-22.5,58.2666669008468" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.5,58.2666669008468"
+                    Point2="-22.5,62.2666669008468"
+                    Point3="-18.5,62.2666669008468" />
+                  <mssgle:LineSegment
+                    End="8.33333270417309,62.2666669008468" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="310.4,315.2"
+          Size="310.4,358.4"
+          Id="Package\Populating Author_TitleAU"
+          TopLeft="13.3333328035143,49.400000392596" />
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\Populating Books_Title\Start ETL Logging Process"
+          TopLeft="34.9666510038912,5.00000059922539" />
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\Populating Books_Title\Truncate Staging Table"
+          TopLeft="40.7999841054287,58.7333343595928" />
+        <EdgeLayout
+          Id="Package\Populating Books_Title.PrecedenceConstraints[Constraint]"
+          TopLeft="237.366651003891,25.8000005992254">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.1666668984625,53.7333337603675"
+              Start="0,0"
+              End="-2.66666689846249,53.7333337603675">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.5,0"
+                    Point2="22.5,0"
+                    Point3="22.5,4" />
+                  <mssgle:LineSegment
+                    End="22.5,49.7333337603675" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22.5,49.7333337603675"
+                    Point2="22.5,53.7333337603675"
+                    Point3="18.5,53.7333337603675" />
+                  <mssgle:LineSegment
+                    End="-2.66666689846249,53.7333337603675" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Populating Books_Title\Data Flow Task"
+          TopLeft="62.4666499111394,114.200001467069" />
+        <EdgeLayout
+          Id="Package\Populating Books_Title.PrecedenceConstraints[Constraint 1]"
+          TopLeft="40.7999841054287,79.5333343595928">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21.6666658057108,55.4666671074763"
+              Start="0,0"
+              End="14.1666658057107,55.4666671074763">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5,0"
+                    Point2="-22.5,0"
+                    Point3="-22.5,4" />
+                  <mssgle:LineSegment
+                    End="-22.5,51.4666671074763" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.5,51.4666671074763"
+                    Point2="-22.5,55.4666671074763"
+                    Point3="-18.5,55.4666671074763" />
+                  <mssgle:LineSegment
+                    End="14.1666658057107,55.4666671074763" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="236.8,41.6"
+          Id="Package\Populating Books_Title\Merge Data To Dimensional Table"
+          TopLeft="51.6333170082842,187.866668719186" />
+        <EdgeLayout
+          Id="Package\Populating Books_Title.PrecedenceConstraints[Constraint 2]"
+          TopLeft="137.666649911139,155.800001467069">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32.3666670971448,32.0666672521166"
+              Start="0,0"
+              End="32.3666670971448,24.5666672521166">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.0333336260583" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.0333336260583"
+                    Point2="0,16.0333336260583"
+                    Point3="4,16.0333336260583" />
+                  <mssgle:LineSegment
+                    End="28.3666670971448,16.0333336260583" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.3666670971448,16.0333336260583"
+                    Point2="32.3666670971448,16.0333336260583"
+                    Point3="32.3666670971448,20.0333336260583" />
+                  <mssgle:LineSegment
+                    End="32.3666670971448,24.5666672521166" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\Populating Books_Title\Update ETL Logging Record"
+          TopLeft="55.7999835093824,266.733336012628" />
+        <EdgeLayout
+          Id="Package\Populating Books_Title.PrecedenceConstraints[Constraint 3]"
+          TopLeft="170.033317008284,229.466668719186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9.43333349890182,37.2666672934426"
+              Start="0,0"
+              End="-9.43333349890182,29.7666672934426">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.6333336467213" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.6333336467213"
+                    Point2="0,18.6333336467213"
+                    Point3="-4,18.6333336467213" />
+                  <mssgle:LineSegment
+                    End="-5.43333349890182,18.6333336467213" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.43333349890182,18.6333336467213"
+                    Point2="-9.43333349890182,18.6333336467213"
+                    Point3="-9.43333349890182,22.6333336467213" />
+                  <mssgle:LineSegment
+                    End="-9.43333349890182,29.7666672934426" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="293.6,336"
+          Size="293.6,379.2"
+          Id="Package\Populating Books_Title"
+          TopLeft="359.166652394666,41.6000003306073" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="323.733332803514,229.900000361602">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.4333195911519,0"
+              Start="0,0"
+              End="27.9333195911519,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="27.9333195911519,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\Populating Payment_facts\Start ETL Logging Process"
+          TopLeft="28,7.66666729344259" />
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\Populating Payment_facts\Truncate Staging Table"
+          TopLeft="38.8333329028553,61.4000010538101" />
+        <EdgeLayout
+          Id="Package\Populating Payment_facts.PrecedenceConstraints[Constraint]"
+          TopLeft="28,28.4666672934426">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.8333329028553,53.7333337603675"
+              Start="0,0"
+              End="3.33333290285532,53.7333337603675">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5,0"
+                    Point2="-22.5,0"
+                    Point3="-22.5,4" />
+                  <mssgle:LineSegment
+                    End="-22.5,49.7333337603675" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.5,49.7333337603675"
+                    Point2="-22.5,53.7333337603675"
+                    Point3="-18.5,53.7333337603675" />
+                  <mssgle:LineSegment
+                    End="3.33333290285532,53.7333337603675" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="194.4,41.6"
+          Id="Package\Populating Payment_facts\Merge Data to Dim Table"
+          TopLeft="47.2333038952628,194.00000210762" />
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\Populating Payment_facts\Update ETL Logging Record"
+          TopLeft="53.0666369968003,268.533336033291" />
+        <EdgeLayout
+          Id="Package\Populating Payment_facts.PrecedenceConstraints[Constraint 3]"
+          TopLeft="144.433303895263,235.60000210762">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.4333331015375,32.933333925671"
+              Start="0,0"
+              End="13.4333331015375,25.433333925671">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.4666669628355" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.4666669628355"
+                    Point2="0,16.4666669628355"
+                    Point3="4,16.4666669628355" />
+                  <mssgle:LineSegment
+                    End="9.43333310153753,16.4666669628355" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.43333310153753,16.4666669628355"
+                    Point2="13.4333331015375,16.4666669628355"
+                    Point3="13.4333331015375,20.4666669628355" />
+                  <mssgle:LineSegment
+                    End="13.4333331015375,25.433333925671" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Populating Payment_facts\Data Flow Task"
+          TopLeft="58.3999698003146,126.400001322428" />
+        <EdgeLayout
+          Id="Package\Populating Payment_facts.PrecedenceConstraints[Constraint 1]"
+          TopLeft="132.816651351585,103.00000105381">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.4000002686183"
+              Start="0,0"
+              End="0,15.9000002686183">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.9000002686183" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Populating Payment_facts.PrecedenceConstraints[Constraint 2]"
+          TopLeft="133.599969800315,168.000001322428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.8333340949482,26.0000007851919"
+              Start="0,0"
+              End="10.8333340949482,18.5000007851919">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.00000039259595" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.00000039259595"
+                    Point2="0,13.000000392596"
+                    Point3="4,13.000000392596" />
+                  <mssgle:LineSegment
+                    End="6.83333409494821,13.000000392596" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.83333409494821,13.000000392596"
+                    Point2="10.8333340949482,13.000000392596"
+                    Point3="10.8333340949482,17.000000392596" />
+                  <mssgle:LineSegment
+                    End="10.8333340949482,18.5000007851919" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="288.8,364.8"
+          Size="288.8,408"
+          Id="Package\Populating Payment_facts"
+          TopLeft="701.30000278155,42.4000002479553" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="652.766652394666,231.200000330607">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48.533350386884,15.199999917348"
+              Start="0,0"
+              End="41.033350386884,15.199999917348">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="20.266675193442,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20.266675193442,0"
+                    Point2="24.266675193442,0"
+                    Point3="24.266675193442,4" />
+                  <mssgle:LineSegment
+                    End="24.266675193442,11.199999917348" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.266675193442,11.199999917348"
+                    Point2="24.266675193442,15.199999917348"
+                    Point3="28.266675193442,15.199999917348" />
+                  <mssgle:LineSegment
+                    End="41.033350386884,15.199999917348" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Populating Author_TitleAU\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source"
+          TopLeft="328.33332028654,24.2666668595208" />
+        <NodeLayout
+          Size="204.8,41.6"
+          Id="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table"
+          TopLeft="333.333320087857,147.333334504233" />
+        <EdgeLayout
+          Id="Package\Populating Author_TitleAU\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="419.533320286539,65.8666668595208">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.1999998013177,81.4666676447127"
+              Start="0,0"
+              End="16.1999998013177,73.9666676447127">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.7333338223563" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.7333338223563"
+                    Point2="0,40.7333338223563"
+                    Point3="4,40.7333338223563" />
+                  <mssgle:LineSegment
+                    End="12.1999998013177,40.7333338223563" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.1999998013177,40.7333338223563"
+                    Point2="16.1999998013177,40.7333338223563"
+                    Point3="16.1999998013177,44.7333338223563" />
+                  <mssgle:LineSegment
+                    End="16.1999998013177,73.9666676447127" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating Author_TitleAU\Data Flow Task\Get Data From Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating Author_TitleAU\Data Flow Task\Load Data to Staging Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Populating Books_Title\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\Populating Books_Title\Data Flow Task\Get Data From Source"
+          TopLeft="445,32" />
+        <NodeLayout
+          Size="212.8,41.6"
+          Id="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table"
+          TopLeft="428,129" />
+        <EdgeLayout
+          Id="Package\Populating Books_Title\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="535.3,73.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.4"
+              Start="0,0"
+              End="0,47.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating Books_Title\Data Flow Task\Get Data From Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating Books_Title\Data Flow Task\Load Data into Staging Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Populating Payment_facts\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Populating Payment_facts\Data Flow Task\OLE DB Source"
+          TopLeft="464,21" />
+        <NodeLayout
+          Size="136.8,41.6"
+          Id="Package\Populating Payment_facts\Data Flow Task\Lookup Auth"
+          TopLeft="478,106" />
+        <EdgeLayout
+          Id="Package\Populating Payment_facts\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="543.2,62.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.4"
+              Start="0,0"
+              End="0,35.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="135.2,41.6"
+          Id="Package\Populating Payment_facts\Data Flow Task\Lookup Title"
+          TopLeft="490,196" />
+        <EdgeLayout
+          Id="Package\Populating Payment_facts\Data Flow Task.Paths[Lookup Match Output]"
+          TopLeft="546.4,147.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.2,48.4000000000001"
+              Start="0,0"
+              End="11.2,40.9000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2"
+                    Point2="0,24.2"
+                    Point3="4,24.2" />
+                  <mssgle:LineSegment
+                    End="7.20000000000005,24.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.20000000000005,24.2"
+                    Point2="11.2,24.2"
+                    Point3="11.2,28.2" />
+                  <mssgle:LineSegment
+                    End="11.2,40.9000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-42.59138671875,29.2,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination"
+          TopLeft="479,279" />
+        <EdgeLayout
+          Id="Package\Populating Payment_facts\Data Flow Task.Paths[Lookup Match Output1]"
+          TopLeft="561.1,237.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.3999999999999"
+              Start="0,0"
+              End="0,33.8999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.8999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,11.1453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating Payment_facts\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating Payment_facts\Data Flow Task\Lookup Auth">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">true</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating Payment_facts\Data Flow Task\Lookup Title">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating Payment_facts\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
